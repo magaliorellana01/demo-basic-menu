@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getLocal } from '../lib/locales'
+import MenuBasica from './MenuBasica'
+import MenuPremium from './MenuPremium'
 import NoEncontrado from './NoEncontrado'
 
 export default function MenuPage() {
@@ -27,11 +29,6 @@ export default function MenuPage() {
 
   const { local } = estado
 
-  // Vista provisoria para verificar los datos; el diseño viene en la Tarea 2.
-  return (
-    <main>
-      <h1>{local.nombre}</h1>
-      <pre>{JSON.stringify(local, null, 2)}</pre>
-    </main>
-  )
+  if (local.plan === 'premium') return <MenuPremium local={local} />
+  return <MenuBasica local={local} />
 }
