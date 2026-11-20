@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getLocal } from '../lib/locales'
 import MenuBasica from './MenuBasica'
-import MenuPremium from './MenuPremium'
 import NoEncontrado from './NoEncontrado'
 
 export default function MenuPage() {
@@ -27,8 +26,5 @@ export default function MenuPage() {
   if (estado.slug !== slug) return <p>Cargando…</p>
   if (!estado.local) return <NoEncontrado />
 
-  const { local } = estado
-
-  if (local.plan === 'premium') return <MenuPremium local={local} />
-  return <MenuBasica local={local} />
+  return <MenuBasica local={estado.local} />
 }
