@@ -1,30 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getLocal } from '../lib/locales'
+import { useLocal } from '../lib/useLocal'
 import MenuBasica from './MenuBasica'
 import NoEncontrado from './NoEncontrado'
 
 export default function MenuPage() {
   const { slug } = useParams()
-  // Guardamos el slug junto con el resultado para saber si corresponde al actual.
-  const [estado, setEstado] = useState({ slug: null, local: null })
+  const { cargando, local } = useLocal(slug)
 
   useEffect(() => {
-    let vigente = true
-    getLocal(slug).then((local) => {
-      if (vigente) setEstado({ slug, local })
-    })
-    return () => {
-      vigente = false
-    }
-  }, [slug])
+    if (local) document.title = local.nombre
+  }, [local])
 
-  useEffect(() => {
-    if (estado.local) document.title = estado.local.nombre
-  }, [estado.local])
+  if (cargando) return <p>Cargando…</p>
+  if (!local) return <NoEncontrado />
 
-  if (estado.slug !== slug) return <p>Cargando…</p>
-  if (!estado.local) return <NoEncontrado />
-
-  return <MenuBasica local={estado.local} />
+  return <MenuBasica local={local} />
 }

@@ -11,6 +11,7 @@ npm-debug.log*
 # Entorno local
 .env
 .env.*
+!.env.example
 *.local
 
 # Editores y sistema

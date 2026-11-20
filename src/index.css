@@ -205,3 +205,116 @@ body {
     padding-top: 3rem;
   }
 }
+
+/* Página del QR */
+.qr main {
+  padding-block: 2rem 3rem;
+}
+
+.qr__tarjeta {
+  max-width: 24rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--color-linea);
+  border-radius: 0.5rem;
+}
+
+.qr__tarjeta h1 {
+  margin: 0 0 1.5rem;
+  font-size: 1.75rem;
+}
+
+.qr__codigo {
+  width: 100%;
+  max-width: 18rem;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.qr__codigo svg {
+  width: 100%;
+  height: auto;
+}
+
+.qr__texto {
+  margin: 1.5rem 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.qr__url {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-suave);
+  overflow-wrap: anywhere;
+}
+
+.qr__acciones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.qr__acciones button {
+  min-height: 44px;
+  padding: 0 1.25rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-fondo, #fff);
+  background: var(--color-primario);
+  border: 0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.qr__acciones button:focus-visible {
+  outline: 2px solid var(--color-primario);
+  outline-offset: 2px;
+}
+
+.qr__acciones button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Al imprimir queda solo la tarjeta: nombre, QR y texto */
+@media print {
+  .qr {
+    background: #fff;
+  }
+
+  .qr main {
+    padding: 0;
+  }
+
+  .qr__acciones {
+    display: none;
+  }
+
+  .qr__tarjeta {
+    max-width: none;
+    margin: 0;
+    padding: 3rem 1rem;
+    border: 0;
+  }
+
+  .qr__tarjeta h1 {
+    font-size: 2.5rem;
+  }
+
+  .qr__codigo {
+    max-width: 14cm;
+  }
+
+  .qr__texto {
+    font-size: 1.5rem;
+  }
+
+  .qr__url {
+    font-size: 1rem;
+  }
+}
