@@ -1,0 +1,167 @@
+{
+  "slug": "cafe-demo",
+  "plan": "basica",
+  "nombre": "Café Almendro",
+  "descripcion": "Café de especialidad, pastelería casera y almuerzos de todos los días.",
+  "logo": null,
+  "tema": {
+    "colorPrimario": "#7a4b2a",
+    "colorFondo": "#faf7f2",
+    "fuente": "Georgia, serif"
+  },
+  "categorias": [
+    {
+      "id": "cafes",
+      "nombre": "Cafés",
+      "productos": [
+        {
+          "id": "espresso",
+          "nombre": "Espresso",
+          "descripcion": "Café de especialidad, tostado en el día.",
+          "precio": 2800,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "cortado",
+          "nombre": "Cortado",
+          "descripcion": "Espresso con un toque de leche texturizada.",
+          "precio": 3200,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "flat-white",
+          "nombre": "Flat white",
+          "descripcion": "Doble espresso con leche entera microespumada.",
+          "precio": 4500,
+          "imagen": null,
+          "destacado": true,
+          "disponible": true
+        },
+        {
+          "id": "latte",
+          "nombre": "Latte",
+          "descripcion": "Espresso con abundante leche. Se puede pedir con leche de almendras.",
+          "precio": 4800,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "chocolate-caliente",
+          "nombre": "Chocolate caliente",
+          "descripcion": "Chocolate semiamargo derretido con leche, servido con crema.",
+          "precio": 5200,
+          "imagen": null,
+          "destacado": false,
+          "disponible": false
+        }
+      ]
+    },
+    {
+      "id": "pasteleria",
+      "nombre": "Pastelería",
+      "productos": [
+        {
+          "id": "medialuna",
+          "nombre": "Medialuna de manteca",
+          "descripcion": "Hojaldrada, de elaboración propia.",
+          "precio": 1500,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "budin-limon",
+          "nombre": "Budín de limón",
+          "descripcion": "Porción de budín húmedo con glaseado cítrico.",
+          "precio": 3800,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "brownie",
+          "nombre": "Brownie con nueces",
+          "descripcion": "Chocolate semiamargo, interior húmedo y nueces tostadas.",
+          "precio": 4200,
+          "imagen": null,
+          "destacado": true,
+          "disponible": true
+        },
+        {
+          "id": "cheesecake",
+          "nombre": "Cheesecake de frutos rojos",
+          "descripcion": "Base de galletita, queso crema y salsa de frutos rojos.",
+          "precio": 6500,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "alfajor",
+          "nombre": "Alfajor de maicena",
+          "descripcion": "Con dulce de leche y coco rallado.",
+          "precio": 2200,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": "almuerzos",
+      "nombre": "Almuerzos",
+      "productos": [
+        {
+          "id": "tostado",
+          "nombre": "Tostado de jamón y queso",
+          "descripcion": "Pan de miga artesanal, jamón cocido y queso cremoso.",
+          "precio": 6800,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "ensalada-caesar",
+          "nombre": "Ensalada Caesar con pollo",
+          "descripcion": "Lechuga, pollo grillado, croutons, parmesano y aderezo Caesar.",
+          "precio": 9800,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "sandwich-lomito",
+          "nombre": "Sándwich de lomito",
+          "descripcion": "Lomito, queso, tomate y lechuga en pan ciabatta. Con papas rústicas.",
+          "precio": 12500,
+          "imagen": null,
+          "destacado": true,
+          "disponible": true
+        },
+        {
+          "id": "tarta-del-dia",
+          "nombre": "Tarta del día con ensalada",
+          "descripcion": "Consultá el sabor del día con el equipo.",
+          "precio": 8900,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        },
+        {
+          "id": "omelette",
+          "nombre": "Omelette de verduras",
+          "descripcion": "Tres huevos, zucchini, cebolla caramelizada y queso. Con ensalada.",
+          "precio": 8200,
+          "imagen": null,
+          "destacado": false,
+          "disponible": true
+        }
+      ]
+    }
+  ]
+}

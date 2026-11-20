@@ -1,0 +1,25 @@
+# Dependencias y build
+node_modules
+dist
+dist-ssr
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Entorno local
+.env
+.env.*
+*.local
+
+# Editores y sistema
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.sw?
+
+# Cloudflare
+.wrangler

@@ -1,0 +1,23 @@
+/* Estilos mínimos provisorios; el diseño real viene en la Tarea 2. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+pre {
+  overflow-x: auto;
+  font-size: 0.8rem;
+}
