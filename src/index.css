@@ -4,54 +4,129 @@
   box-sizing: border-box;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
 }
 
-main {
+/* Contenido centrado y con ancho máximo en pantallas grandes */
+.contenedor {
   max-width: 40rem;
   margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
+  padding-inline: 1rem;
 }
 
-/* Menú Básica: los colores y la fuente salen del tema del local */
+/* Menú Básica: los colores y la fuente de títulos salen del tema del local */
 .menu {
   --color-texto: #2b2622;
   --color-suave: #6b625a;
-  --color-linea: rgba(43, 38, 34, 0.15);
+  --color-linea: #e3dcd2;
+  --alto-nav: 3.75rem;
   min-height: 100vh;
   background: var(--color-fondo, #fff);
   color: var(--color-texto);
-  font-family: var(--fuente, system-ui, sans-serif);
+  font-size: 1rem;
 }
 
-.encabezado {
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-linea);
-}
-
-.encabezado h1 {
-  margin: 0;
-  font-size: 2rem;
+.menu h1,
+.menu h2 {
+  font-family: var(--fuente-titulos, inherit);
+  font-weight: 700;
   line-height: 1.2;
   color: var(--color-primario);
 }
 
+/* Encabezado */
+.encabezado {
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  letter-spacing: -0.01em;
+}
+
 .encabezado p {
   margin: 0.5rem 0 0;
+  max-width: 32rem;
   color: var(--color-suave);
 }
 
+/* Barra de categorías */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-fondo, #fff);
+  border-top: 1px solid var(--color-linea);
+  border-bottom: 1px solid var(--color-linea);
+}
+
+.nav__barra {
+  position: relative;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav__barra::-webkit-scrollbar {
+  display: none;
+}
+
+.nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin-block: 0.25rem;
+  padding: 0 0.875rem;
+  color: var(--color-suave);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  color: var(--color-texto);
+}
+
+.nav a[aria-current] {
+  color: var(--color-primario);
+  font-weight: 600;
+  border-bottom-color: var(--color-primario);
+}
+
+.nav a:focus-visible {
+  outline: 2px solid var(--color-primario);
+  outline-offset: -2px;
+}
+
+/* Categorías */
 .categoria {
-  margin-top: 2rem;
+  padding-top: 2rem;
 }
 
 .categoria h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
-  color: var(--color-primario);
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  /* que la barra fija no tape el título al saltar */
+  scroll-margin-top: calc(var(--alto-nav) + 1rem);
 }
 
 .categoria ul {
@@ -60,29 +135,38 @@ main {
   list-style: none;
 }
 
+/* Productos */
 .producto {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-linea);
+}
+
+.producto__linea {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   gap: 1rem;
-  padding: 0.875rem 0;
-  border-bottom: 1px solid var(--color-linea);
 }
 
 .producto h3 {
   margin: 0;
-  font-size: 1rem;
-}
-
-.producto p {
-  margin: 0.25rem 0 0;
-  font-size: 0.9rem;
-  color: var(--color-suave);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .producto__precio {
   flex-shrink: 0;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+.producto p {
+  margin: 0.25rem 0 0;
+  max-width: 30rem;
+  font-size: 0.9375rem;
+  color: var(--color-suave);
 }
 
 .producto--agotado h3,
@@ -93,4 +177,31 @@ main {
 
 .producto p.producto__aviso {
   font-style: italic;
+}
+
+/* Pie */
+.pie {
+  padding: 2rem 1rem 2.5rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-suave);
+}
+
+.pie p {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .encabezado {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  .encabezado h1 {
+    font-size: 3rem;
+  }
+
+  .categoria {
+    padding-top: 3rem;
+  }
 }

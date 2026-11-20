@@ -5,12 +5,12 @@ export default function Producto({ producto }) {
 
   return (
     <li className={disponible ? 'producto' : 'producto producto--agotado'}>
-      <div className="producto__texto">
+      <div className="producto__linea">
         <h3>{nombre}</h3>
-        {descripcion && <p>{descripcion}</p>}
-        {!disponible && <p className="producto__aviso">No disponible por el momento</p>}
+        <span className="producto__precio">{formatearPrecio(precio)}</span>
       </div>
-      <span className="producto__precio">{formatearPrecio(precio)}</span>
+      {descripcion && <p>{descripcion}</p>}
+      {!disponible && <p className="producto__aviso">No disponible por el momento</p>}
     </li>
   )
 }
