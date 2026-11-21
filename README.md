@@ -37,6 +37,14 @@ src/
 El `slug` del JSON define la ruta: `cafe-demo` se ve en `/cafe-demo`.
 Los precios van como números enteros en pesos (`4200`); el formato `$ 4.200` se aplica al mostrarlos.
 
+## Tema del local
+
+El campo `tema` del JSON define la identidad visual del local:
+`colorPrimario` (texto y fondo del encabezado), `colorFondo`, `colorAcento` (detalles),
+`colorArena` (texto secundario sobre el encabezado), `fuenteTitulos` y `fuenteTexto`.
+Las fuentes son las del sistema (sin descargas). La demo usa la identidad de Aroma, una cafetería ficticia.
+Las animaciones (vapor de la taza, granos, aparición de las categorías) se desactivan si el dispositivo pide reducir el movimiento.
+
 ## QR
 
 `/:slug/qr` muestra una tarjeta con el QR del menú, para descargar (PNG de alta resolución o SVG)

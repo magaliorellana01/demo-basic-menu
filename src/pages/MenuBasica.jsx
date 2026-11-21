@@ -1,20 +1,19 @@
 import EncabezadoLocal from '../components/EncabezadoLocal'
+import FondoGranos from '../components/FondoGranos'
 import NavCategorias from '../components/NavCategorias'
 import Pie from '../components/Pie'
 import SeccionCategoria from '../components/SeccionCategoria'
+import { variablesTema } from '../lib/tema'
 
 export default function MenuBasica({ local }) {
-  const { colorPrimario, colorFondo, fuente } = local.tema
-
-  const tema = {
-    '--color-primario': colorPrimario,
-    '--color-fondo': colorFondo,
-    '--fuente-titulos': fuente,
-  }
-
   return (
-    <div className="menu" style={tema}>
-      <EncabezadoLocal nombre={local.nombre} descripcion={local.descripcion} />
+    <div className="menu" style={variablesTema(local.tema)}>
+      <FondoGranos />
+      <EncabezadoLocal
+        nombre={local.nombre}
+        rubro={local.rubro}
+        descripcion={local.descripcion}
+      />
       <NavCategorias categorias={local.categorias} />
       <main className="contenedor">
         {local.categorias.map((categoria) => (

@@ -23,42 +23,126 @@ body {
   padding-inline: 1rem;
 }
 
-/* Menú Básica: los colores y la fuente de títulos salen del tema del local */
+/* Menú Básica: colores y fuentes salen del tema del local */
 .menu {
-  --color-texto: #2b2622;
-  --color-suave: #6b625a;
-  --color-linea: #e3dcd2;
-  --alto-nav: 3.75rem;
+  --color-texto: var(--color-primario);
+  --color-suave: color-mix(in srgb, var(--color-primario) 72%, var(--color-fondo));
+  --color-linea: color-mix(in srgb, var(--color-primario) 16%, var(--color-fondo));
+  --aire-nav: 1rem;
+  /* enlace de 44px + 2 bordes de 2px + línea inferior + aire arriba y abajo */
+  --alto-nav: calc(49px + 2 * var(--aire-nav));
   min-height: 100vh;
-  background: var(--color-fondo, #fff);
+  background: var(--color-fondo);
   color: var(--color-texto);
+  font-family: var(--fuente-texto, system-ui, sans-serif);
   font-size: 1rem;
 }
 
 .menu h1,
 .menu h2 {
-  font-family: var(--fuente-titulos, inherit);
-  font-weight: 700;
+  font-family: var(--fuente-titulos, serif);
   line-height: 1.2;
-  color: var(--color-primario);
+  text-transform: lowercase;
 }
 
-/* Encabezado */
+/* Encabezado: logotipo de la marca sobre fondo oscuro */
 .encabezado {
-  padding-top: 2.5rem;
-  padding-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-primario);
+  color: var(--color-fondo);
+}
+
+.encabezado__interior {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-block: 2.5rem 2.25rem;
+}
+
+.taza {
+  flex-shrink: 0;
+  width: 3.75rem;
+  height: auto;
+  stroke: var(--color-fondo);
+}
+
+.taza__vapor {
+  stroke: var(--color-arena);
 }
 
 .encabezado h1 {
   margin: 0;
-  font-size: 2.25rem;
-  letter-spacing: -0.01em;
+  font-size: clamp(3.5rem, 15vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-fondo);
 }
 
-.encabezado p {
+.encabezado__rubro {
   margin: 0.5rem 0 0;
-  max-width: 32rem;
-  color: var(--color-suave);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-arena);
+}
+
+.encabezado__linea {
+  width: min(16rem, 70%);
+  height: 2px;
+  margin: 1rem 0;
+  background: var(--color-acento);
+}
+
+.encabezado__lema {
+  margin: 0;
+  font-family: var(--fuente-titulos, serif);
+  font-size: 1.125rem;
+  font-style: italic;
+  letter-spacing: 0.06em;
+}
+
+/* El contenido queda por encima de los granos que caen de fondo */
+.menu main,
+.pie {
+  position: relative;
+}
+
+/* Granos que caen detrás del menú (solo con movimiento permitido) */
+.fondo-granos {
+  display: none;
+}
+
+/* Granos de café decorativos */
+.encabezado__granos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.encabezado__grano {
+  position: absolute;
+  left: var(--izquierda);
+  top: var(--arriba);
+  width: var(--tamano);
+  transform: rotate(var(--giro));
+}
+
+.grano {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.grano ellipse {
+  fill: var(--color-acento);
+}
+
+.grano path {
+  stroke: var(--color-fondo);
 }
 
 /* Barra de categorías */
@@ -66,8 +150,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--color-fondo, #fff);
-  border-top: 1px solid var(--color-linea);
+  /* mismo aire arriba (hacia el encabezado) y abajo (hasta la línea) */
+  padding-block: var(--aire-nav);
+  background: var(--color-fondo);
   border-bottom: 1px solid var(--color-linea);
 }
 
@@ -92,13 +177,14 @@ body {
   display: flex;
   align-items: center;
   min-height: 44px;
-  margin-block: 0.25rem;
   padding: 0 0.875rem;
   color: var(--color-suave);
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
+  /* borde arriba y abajo para que el texto quede centrado */
+  border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
 }
 
@@ -107,9 +193,9 @@ body {
 }
 
 .nav a[aria-current] {
-  color: var(--color-primario);
-  font-weight: 600;
-  border-bottom-color: var(--color-primario);
+  color: var(--color-texto);
+  font-weight: 700;
+  border-bottom-color: var(--color-acento);
 }
 
 .nav a:focus-visible {
@@ -124,9 +210,21 @@ body {
 
 .categoria h2 {
   margin: 0 0 0.25rem;
-  font-size: 1.5rem;
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: var(--color-texto);
   /* que la barra fija no tape el título al saltar */
   scroll-margin-top: calc(var(--alto-nav) + 1rem);
+}
+
+/* detalle en cobre: la marca lo usa solo como acento */
+.categoria h2::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-top: 0.5rem;
+  background: var(--color-acento);
 }
 
 .categoria ul {
@@ -191,18 +289,143 @@ body {
   margin: 0;
 }
 
-@media (min-width: 768px) {
-  .encabezado {
-    padding-top: 4rem;
-    padding-bottom: 2rem;
+@media (min-width: 640px) {
+  .encabezado__interior {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 2rem;
+    padding-block: 4rem 3rem;
   }
 
-  .encabezado h1 {
-    font-size: 3rem;
+  .taza {
+    width: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu {
+    --aire-nav: 1.5rem;
   }
 
   .categoria {
     padding-top: 3rem;
+  }
+}
+
+/* Animaciones suaves: solo si la persona no pidió reducir el movimiento */
+@media (prefers-reduced-motion: no-preference) {
+  .taza,
+  .encabezado__texto > * {
+    animation: entrar 0.8s ease-out backwards;
+  }
+
+  .encabezado h1 {
+    animation-delay: 0.1s;
+  }
+
+  .encabezado__rubro {
+    animation-delay: 0.25s;
+  }
+
+  .encabezado__linea {
+    animation-name: trazar;
+    animation-delay: 0.4s;
+    transform-origin: left;
+  }
+
+  .encabezado__lema {
+    animation-delay: 0.55s;
+  }
+
+  .taza__vapor path {
+    animation: vapor 3.6s ease-in-out infinite;
+  }
+
+  .taza__vapor path:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+
+  .taza__vapor path:nth-child(3) {
+    animation-delay: 1.2s;
+  }
+
+  .grano {
+    animation: flotar 7s ease-in-out infinite;
+    animation-delay: var(--retraso);
+  }
+
+  .fondo-granos {
+    display: block;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .fondo-granos__grano {
+    position: absolute;
+    top: 0;
+    left: var(--izquierda);
+    width: var(--tamano);
+    opacity: 0.18;
+    will-change: transform;
+    animation: caer var(--duracion) linear infinite;
+    animation-delay: var(--retraso);
+  }
+
+  .categoria {
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  .categoria--oculta {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
+
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+@keyframes trazar {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes vapor {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(3px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes caer {
+  from {
+    transform: translate3d(0, -12vh, 0) rotate(var(--giro));
+  }
+  to {
+    transform: translate3d(var(--deriva), 112vh, 0) rotate(calc(var(--giro) + 200deg));
+  }
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
   }
 }
 

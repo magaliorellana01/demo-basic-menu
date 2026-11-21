@@ -1,13 +1,17 @@
 {
   "slug": "cafe-demo",
   "plan": "basica",
-  "nombre": "Café Almendro",
-  "descripcion": "Café de especialidad, pastelería casera y almuerzos de todos los días.",
+  "nombre": "Aroma",
+  "rubro": "Cafetería",
+  "descripcion": "Un ritual para todos los días.",
   "logo": null,
   "tema": {
-    "colorPrimario": "#7a4b2a",
-    "colorFondo": "#faf7f2",
-    "fuente": "Georgia, serif"
+    "colorPrimario": "#30221D",
+    "colorFondo": "#F6F0E6",
+    "colorAcento": "#BA6B49",
+    "colorArena": "#D6BBA0",
+    "fuenteTitulos": "'Liberation Serif', 'Times New Roman', Times, serif",
+    "fuenteTexto": "'DejaVu Sans', Verdana, system-ui, sans-serif"
   },
   "categorias": [
     {

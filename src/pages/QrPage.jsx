@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useLocal } from '../lib/useLocal'
+import { variablesTema } from '../lib/tema'
 import { urlPublicaMenu } from '../lib/urlPublica'
 import NoEncontrado from './NoEncontrado'
 
@@ -53,15 +54,8 @@ export default function QrPage() {
     descargar(href, `qr-${slug}.png`)
   }
 
-  const { colorPrimario, colorFondo, fuente } = local.tema
-  const tema = {
-    '--color-primario': colorPrimario,
-    '--color-fondo': colorFondo,
-    '--fuente-titulos': fuente,
-  }
-
   return (
-    <div className="menu qr" style={tema}>
+    <div className="menu qr" style={variablesTema(local.tema)}>
       <main className="contenedor">
         <section className="qr__tarjeta" aria-labelledby="qr-titulo">
           <h1 id="qr-titulo">{local.nombre}</h1>
